@@ -127,7 +127,7 @@ pub const raw = struct {
     pub extern fn trib(x1: f32, y1: f32, x2: f32, y2: f32, x3: f32, y3: f32, color: i32) void;
     pub extern fn time() f32;
     pub extern fn trace(text: [*:0]const u8, color: i32) void;
-    pub extern fn tstamp() u64;
+    pub extern fn tstamp() u32;
     pub extern fn vbank(bank: i32) u8;
 };
 
