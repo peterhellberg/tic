@@ -12,11 +12,15 @@ Create a `build.zig.zon` that looks something like this:
     .paths = .{""},
     .dependencies = .{
         .tic = .{
-            .url = "https://github.com/peterhellberg/tic/archive/4174676d28ad432f4caf795be367a1202c9b0476.tar.gz",
+            .url = "https://github.com/peterhellberg/tic/archive/561f1781861a87ed3e97d5a454632702faeb052a.tar.gz",
+            .hash = "1220cd872564f9f56d46bb7477195be8f5b90549c3ce13faf32d5651097dee2d736f",
         },
     },
 }
 ```
+
+> [!NOTE]
+> If you leave out the hash then `zig build` will tell you that it is missing the hash, and what it is.
 
 And then you can add the module in your `build.zig` like this:
 ```zig
