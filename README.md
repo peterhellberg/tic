@@ -28,6 +28,46 @@ And then you can add the module in your `build.zig` like this:
 exe.addModule("tic", b.dependency("tic", .{}).module("tic"));
 ```
 
+In your `src/main.zig` you should now be able to:
+```zig
+const tic = @import("tic");
+const std = @import("std");
+
+export fn BDR(row: i32) void {
+    const v = tic.time() / 99 + @as(f32, @floatFromInt(row)) / 2;
+    tic.poke(0x3ff9, @intFromFloat(2 + std.math.sin(v) * 1.2));
+}
+
+export fn TIC() void {
+    tic.rect(0, 13, 92, 57, 4);
+    tic.rect(107, 13, 50, 11, 12);
+    tic.rect(107, 60, 49, 11, 12);
+    tic.rect(164, 14, 12, 56, 12);
+    tic.elli(214, 42, 32, 30, 12);
+    tic.elli(214, 42, 18, 18, 0);
+    tic.tri(223, 40, 240, 19, 240, 40, 0);
+    tic.tri(209, 40, 236, 40, 236, 56, 12);
+    tic.rect(236, 40, 4, 25, 0);
+    tic.rect(226, 48, 4, 9, 12);
+    tic.tri(141, 22, 107, 61, 124, 60, 12);
+    tic.tri(124, 60, 139, 22, 157, 24, 12);
+    tic.tri(18, 27, 28, 13, 22, 28, 0);
+    tic.tri(28, 13, 22, 28, 33, 13, 0);
+    tic.tri(19, 57, 8, 70, 13, 70, 0);
+    tic.tri(19, 57, 13, 70, 24, 57, 0);
+    tic.rect(15, 27, 66, 31, 0);
+    tic.tri(3, 83, 49, 26, 43, 56, 4);
+    tic.tri(43, 56, 51, 16, 87, 0, 4);
+    tic.tri(73, 27, 84, 13, 77, 13, 0);
+    tic.tri(77, 13, 64, 31, 73, 27, 0);
+    tic.tri(76, 57, 64, 72, 70, 57, 0);
+    tic.tri(70, 57, 65, 70, 60, 70, 0);
+    if (tic.btn(4)) tic.exit();
+}
+```
+
+![TIC-80 Zig Example](https://user-images.githubusercontent.com/565124/282634529-e3015eb2-3969-4ac7-8ee8-bcf8f7c5b7d4.png)
+
 ## Example `build.zig`
 
 > [!IMPORTANT]
@@ -85,6 +125,35 @@ pub fn build(b: *std.Build) !void {
 
     b.installArtifact(exe);
 }
+```
+
+## Example `cart.wasmp`
+
+> [!IMPORTANT]
+> You can only use the `wasmp` format if you run the [TIC-80 Pro Version](https://github.com/nesbox/TIC-80#pro-version)
+
+```lua
+-- desc:   TIC-80 Zig Example
+-- script: wasm
+"
+Code is compiled from src/main.zig
+into zig-out/bin/cart.wasm
+
+Load it like this:
+
+import binary zig-out/bin/cart.wasm
+run
+
+"
+-- <WAVES>
+-- 000:00000000ffffffff00000000ffffffff
+-- 001:0123456789abcdeffedcba9876543210
+-- 002:0123456789abcdef0123456789abcdef
+-- </WAVES>
+
+-- <PALETTE>
+-- 000:1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57
+-- </PALETTE>
 ```
 
 ## Links
