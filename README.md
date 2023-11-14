@@ -16,8 +16,8 @@ You can have `zig build` retrieve the `tic` module if you specify it as a depend
     .paths = .{""},
     .dependencies = .{
         .tic = .{
-            .url = "https://github.com/peterhellberg/tic/archive/561f1781861a87ed3e97d5a454632702faeb052a.tar.gz",
-            .hash = "1220cd872564f9f56d46bb7477195be8f5b90549c3ce13faf32d5651097dee2d736f",
+            .url = "https://github.com/peterhellberg/tic/archive/refs/tags/v0.0.1.tar.gz",
+            .hash = "122058de907006fb6e826d9508ad1ff3eeb230f6ab68dcf473fd79f28fb1efb01857",
         },
     },
 }
