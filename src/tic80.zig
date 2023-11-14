@@ -99,8 +99,8 @@ pub const raw = struct {
     pub extern fn keyp(keycode: i32, hold: i32, period: i32) bool;
     pub extern fn line(x0: f32, y0: f32, x1: f32, y1: f32, color: i32) void;
     pub extern fn map(x: i32, y: i32, w: i32, h: i32, sx: i32, sy: i32, trans_colors: ?[*]const u8, color_count: i32, scale: i32, remap: i32) void;
-    pub extern fn memcpy(to: i32, from: i32, length: i32) void;
-    pub extern fn memset(addr: i32, value: u8, length: i32) void;
+    pub extern fn memcpy(to: i32, from: i32, length: i32) i32;
+    pub extern fn memset(addr: i32, value: i32, length: i32) i32;
     pub extern fn mget(x: i32, y: i32) i32;
     pub extern fn mouse(data: *MouseData) void;
     pub extern fn mset(x: i32, y: i32, tile_id: u32) void;
