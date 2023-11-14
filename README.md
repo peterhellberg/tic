@@ -156,6 +156,10 @@ run
 -- </PALETTE>
 ```
 
+## Example file structure
+
+![Tree structure of example cart files](https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee)
+
 ## Links
 
 - https://github.com/nesbox/TIC-80/blob/main/templates/zig/src/tic80.zig
