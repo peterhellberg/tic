@@ -4,7 +4,7 @@ A small Zig ⚡ module meant for my own experiments with [TIC-80](https://tic80.
 
 ## Usage
 
-Create a `build.zig.zon` that looks something like this:
+### Create a `build.zig.zon` that looks something like this:
 ```zig
 .{
     .name = "tic80-zig-game",
@@ -22,7 +22,7 @@ Create a `build.zig.zon` that looks something like this:
 > [!NOTE]
 > If you leave out the hash then `zig build` will tell you that it is missing the hash, and what it is.
 
-And then you can add the module in your `build.zig` like this:
+### And then you can add the module in your `build.zig` like this:
 ```zig
 // Add the tic module to the executable
 exe.addModule("tic", b.dependency("tic", .{}).module("tic"));
@@ -158,7 +158,7 @@ run
 
 ## Example file structure
 
-![Tree structure of example cart files](https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee)
+<img width="50%" src=https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee">
 
 ## Links
 
