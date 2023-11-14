@@ -1,8 +1,12 @@
 # tic :zap:
 
-A small Zig ⚡ module meant for my own experiments with [TIC-80](https://tic80.com/) 🎮 (based on the [tic80.zig template](https://github.com/nesbox/TIC-80/blob/main/templates/zig/src/tic80.zig))
+A small [Zig](https://ziglang.org/) ⚡ module, primarily meant for my own experiments with [TIC-80](https://tic80.com/) 🎮
+
+Based on the [tic80.zig template](https://github.com/nesbox/TIC-80/blob/main/templates/zig/src/tic80.zig), with a few small fixes here and there. :bug:
 
 ## Usage
+
+You can have `zig build` retrieve the `tic` module if you specify it as a dependency.
 
 ### Create a `build.zig.zon` that looks something like this:
 ```zig
