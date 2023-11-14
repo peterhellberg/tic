@@ -25,6 +25,7 @@ You can have `zig build` retrieve the `tic` module if you specify it as a depend
 
 > [!NOTE]
 > If you leave out the hash then `zig build` will tell you that it is missing the hash, and what it is.
+> Another way to get the hash is to use `zig fetch`, this is probably how you _should_ do it :)
 
 ### Then you can add the module in your `build.zig` like this:
 ```zig
