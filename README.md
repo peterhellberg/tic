@@ -32,7 +32,7 @@ You can have `zig build` retrieve the `tic` module if you specify it as a depend
 exe.addModule("tic", b.dependency("tic", .{}).module("tic"));
 ```
 
-In your `src/main.zig` you should now be able to:
+### In your `src/main.zig` you should now be able to:
 ```zig
 const tic = @import("tic");
 const std = @import("std");
@@ -70,9 +70,13 @@ export fn TIC() void {
 }
 ```
 
+Hopefully with a result like this:
+
 ![TIC-80 Zig Example](https://i.imgur.com/TAQVUVE.gif)
 
-## Example `build.zig`
+## Examples
+
+### Example `build.zig`
 
 > [!IMPORTANT]
 > Make sure that you `exe.export_symbol_names` the [TIC-80 Callbacks](https://github.com/nesbox/TIC-80/wiki/API#callbacks) you are using.
@@ -131,7 +135,7 @@ pub fn build(b: *std.Build) !void {
 }
 ```
 
-## Example `cart.wasmp`
+### Example `cart.wasmp`
 
 > [!IMPORTANT]
 > You can only use the `wasmp` format if you run the [TIC-80 Pro Version](https://github.com/nesbox/TIC-80#pro-version)
@@ -160,7 +164,7 @@ run
 -- </PALETTE>
 ```
 
-## Example file structure
+### Example file structure
 
 <img width="60%" src="https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee" />
 
