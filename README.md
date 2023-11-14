@@ -70,7 +70,7 @@ export fn TIC() void {
 }
 ```
 
-![TIC-80 Zig Example](https://user-images.githubusercontent.com/565124/282634529-e3015eb2-3969-4ac7-8ee8-bcf8f7c5b7d4.png)
+![TIC-80 Zig Example](https://i.imgur.com/TAQVUVE.gif)
 
 ## Example `build.zig`
 
