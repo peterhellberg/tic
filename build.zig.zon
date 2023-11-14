@@ -1,0 +1,7 @@
+.{
+    .name = "tic",
+    .version = "0.0.1",
+    .paths = .{
+        "src/tic80.zig",
+    },
+}
