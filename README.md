@@ -4,6 +4,9 @@ A small [Zig](https://ziglang.org/) ⚡ module, primarily meant for my own exper
 
 Based on the [tic80.zig template](https://github.com/nesbox/TIC-80/blob/main/templates/zig/src/tic80.zig), with a few small fixes here and there. :bug:
 
+> [!IMPORTANT]
+> You might want to install the [tic-init](https://github.com/peterhellberg/tic-init) tool and use that instead of manually creating the files for your cart.
+
 ## Usage
 
 You can have `zig build` retrieve the `tic` module if you specify it as a dependency.
@@ -96,9 +99,6 @@ pub fn build(b: *std.Build) !void {
     // Add the tic module to the executable
     exe.addModule("tic", b.dependency("tic", .{}).module("tic"));
 
-    // Add the zlm (Zig Linear Mathemathics) module to the executable
-    exe.addModule("zlm", b.dependency("zlm", .{}).module("zlm"));
-
     // No entry point in the WASM
     exe.entry = .disabled;
 
@@ -115,22 +115,38 @@ pub fn build(b: *std.Build) !void {
     exe.import_memory = true;
 
     // Export symbols for use by TIC
-    exe.export_symbol_names = &[_][]const u8{
-        "TIC",
-        "BDR",
-        "BOOT",
-    };
+    exe.export_symbol_names = &[_][]const u8{"TIC"};
 
-    // Move the cart to the root of the repo
-    const move_cart = b.addSystemCommand(&[_][]const u8{
-        "mv",
-        "zig-out/bin/cart.wasm",
-        "cart.wasm",
+    // Run command that requires you to have a `tic80-pro` binary
+    const run_cmd = b.addSystemCommand(&[_][]const u8{
+        "tic80-pro",
+        "--skip",
+        "--fullscreen",
+        "--fs",
+        ".",
+        "--cmd",
+        "load cart.wasmp &" ++
+            " import binary zig-out/bin/cart.wasm &" ++
+            " save &" ++
+            " run",
     });
+    run_cmd.step.dependOn(b.getInstallStep());
 
-    move_cart.step.dependOn(b.getInstallStep());
+    const run_step = b.step("run", "Run the cart in TIC-80 Pro");
+    run_step.dependOn(&run_cmd.step);
 
-    b.default_step = &move_cart.step;
+    const spy_cmd = b.addSystemCommand(&[_][]const u8{
+        "spy",
+        "--exc",
+        "zig-cache",
+        "--inc",
+        "**/*.zig",
+        "-q",
+        "clear-zig",
+        "build",
+    });
+    const spy_step = b.step("spy", "Run spy watching for file changes");
+    spy_step.dependOn(&spy_cmd.step);
 
     b.installArtifact(exe);
 }
