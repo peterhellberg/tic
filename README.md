@@ -158,7 +158,7 @@ run
 
 ## Example file structure
 
-<img width="50%" src=https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee">
+<img width="60%" src="https://github.com/peterhellberg/tic/assets/565124/eadbdf7c-18ed-426b-8438-813be3a99aee" />
 
 ## Links
 
