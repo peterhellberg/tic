@@ -314,7 +314,7 @@ const MusicArgs = struct {
     row: i8 = -1,
     loop: bool = true,
     sustain: bool = false,
-    tempo: i8 = -1,
+    tempo: i32 = -1,
     speed: i8 = -1,
 };
 
