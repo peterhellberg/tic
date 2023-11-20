@@ -15,12 +15,11 @@ You can have `zig build` retrieve the `tic` module if you specify it as a depend
 ```zig
 .{
     .name = "tic80-zig-game",
-    .version = "0.0.1",
+    .version = "0.0.0",
     .paths = .{""},
     .dependencies = .{
         .tic = .{
-            .url = "https://github.com/peterhellberg/tic/archive/refs/tags/v0.0.1.tar.gz",
-            .hash = "122058de907006fb6e826d9508ad1ff3eeb230f6ab68dcf473fd79f28fb1efb01857",
+            .url = "https://github.com/peterhellberg/tic/archive/refs/tags/v0.0.4.tar.gz",
         },
     },
 }
