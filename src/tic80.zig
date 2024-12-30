@@ -184,7 +184,7 @@ pub const mouse = raw.mouse;
 // map [x=0 y=0] [w=30 h=17] [sx=0 sy=0] [colorkey=-1] [scale=1] [remap=nil]
 // pub extern fn map(x: i32, y: i32, w: i32, h: i32, sx: i32, sy: i32, trans_colors: ?[*]u8, color_count: i32, scale: i32, remap: i32) void;
 
-const MapArgs = struct {
+pub const MapArgs = struct {
     x: i32 = 0,
     y: i32 = 0,
     w: i32 = 30,
@@ -229,7 +229,7 @@ pub const Rotate = enum(u2) {
     by270 = 3,
 };
 
-const SpriteArgs = struct {
+pub const SpriteArgs = struct {
     w: i32 = 1,
     h: i32 = 1,
     transparent: []const u8 = &.{},
@@ -252,7 +252,7 @@ pub const rectb = raw.rectb;
 pub const tri = raw.tri;
 pub const trib = raw.trib;
 
-const TextriArgs = struct {
+pub const TextriArgs = struct {
     texture_source: TextureSource = TextureSource.TILES,
     transparent: []const u8 = &.{},
     z1: f32 = 0,
