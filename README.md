@@ -14,12 +14,13 @@ You can have `zig build` retrieve the `tic` module if you specify it as a depend
 ### Create a `build.zig.zon` that looks something like this:
 ```zig
 .{
-    .name = "tic80-zig-game",
+    .name = .tic80_zig_game,
     .version = "0.0.0",
+    .fingerprint = 0x0,
     .paths = .{""},
     .dependencies = .{
         .tic = .{
-            .url = "https://github.com/peterhellberg/tic/archive/refs/tags/v0.0.6.tar.gz",
+            .url = "https://github.com/peterhellberg/tic/archive/refs/tags/v0.0.7.tar.gz",
         },
     },
 }
@@ -90,12 +91,14 @@ const std = @import("std");
 pub fn build(b: *std.Build) !void {
     const exe = b.addExecutable(.{
         .name = "cart",
-        .root_source_file = b.path("src/main.zig"),
-        .target = b.resolveTargetQuery(.{
-            .cpu_arch = .wasm32,
-            .os_tag = .wasi,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/main.zig"),
+            .target = b.resolveTargetQuery(.{
+                .cpu_arch = .wasm32,
+                .os_tag = .wasi,
+            }),
+            .optimize = .ReleaseSmall,
         }),
-        .optimize = .ReleaseSmall,
     });
 
     // Add the tic module to the executable
